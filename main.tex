@@ -1,0 +1,216 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Ruei-Hong (Neil) Ni} \\ \vspace{1pt}
+    \small \href{mailto:hongnai4507@gmail.com}{\underline{hongnai4507@gmail.com}} $|$ 
+    \href{https://github.com/Hong4507}{\underline{github.com/Hong4507}} 
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {National Taipei University}{New Taipei, Taiwan}
+      {Bachelor of Communication Engineering}{Sep. 2025 -- Present}
+    \resumeSubheading
+      {Mingdao High School}{Taichung, Taiwan}
+      {Gifted and Talented Program}{Aug. 2019 -- Jun. 2025}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {High School Robotics Team Coaching}{Feb. 2025 -- Present}
+      {FRC Team 7130, Mingdao High School}{Taichung, Taiwan}
+      \resumeItemListStart
+        \resumeItem{Mentored student drive teams on tactical robot operations and strategic decision-making to maximize competitive performance }
+        \resumeItem{Designed and implemented a comprehensive technical training curriculum, ensuring members mastered engineering fundamentals prior to the competition season }
+        \resumeItem{Spearheaded the deployment of a practice field Field Management System (adapted from Team 254), creating a competition-grade simulation environment.}
+      \resumeItemListEnd
+      
+% -----------Multiple Positions Heading-----------
+%    \resumeSubSubheading
+%     {Software Engineer I}{Oct 2014 - Sep 2016}
+%     \resumeItemListStart
+%        \resumeItem{Apache Beam}
+%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
+%     \resumeItemListEnd
+%    \resumeSubHeadingListEnd
+%-------------------------------------------
+
+    % \resumeSubheading
+    %   {Information Technology Support Specialist}{Sep. 2018 -- Present}
+    %   {Southwestern University}{Georgetown, TX}
+    %   \resumeItemListStart
+    %     \resumeItem{Communicate with managers to set up campus computers used on campus}
+    %     \resumeItem{Assess and troubleshoot computer problems brought by students, faculty and staff}
+    %     \resumeItem{Maintain upkeep of computers, classroom equipment, and 200 printers across campus}
+    % \resumeItemListEnd
+
+    % \resumeSubheading
+    %   {Artificial Intelligence Research Assistant}{May 2019 -- July 2019}
+    %   {Southwestern University}{Georgetown, TX}
+    %   \resumeItemListStart
+    %     \resumeItem{Explored methods to generate video game dungeons based off of \emph{The Legend of Zelda}}
+    %     \resumeItem{Developed a game in Java to test the generated dungeons}
+    %     \resumeItem{Contributed 50K+ lines of code to an established codebase via Git}
+    %     \resumeItem{Conducted  a human subject study to determine which video game dungeon generation technique is enjoyable}
+    %     \resumeItem{Wrote an 8-page paper and gave multiple presentations on-campus}
+    %     \resumeItem{Presented virtually to the World Conference on Computational Intelligence}
+    %   \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{FIRST Robotics Competition  (Team 7130)  $|$ \emph{Java, Embedded Programming}}}{June 2022 -- June 2023}
+          \resumeItemListStart
+            \resumeItem{Developed scalable Java code for the NI RoboRIO embedded system, coordinating motor output with sensor data for a 120lb competitive robot}
+            \resumeItem{Optimized robot motion planning using PID controllers and odometry, significantly reducing path tracking errors during autonomous periods }
+            \resumeItem{Leveraged OpenCV to engineer a vision-based localization system, allowing the robot to autonomously identify and align with field targets}
+            \resumeItem{Designed a modular Finite-State Machine (FSM) to streamline robot actions, improving code maintainability and debugging efficiency }
+          \resumeItemListEnd
+      % \resumeProjectHeading
+          % {\textbf{WonderlandUHC Plugin Modification} $|$ \emph{Spigot API, Java, Git}}{Sep. 2022 -- Jan. 2023}
+          % \resumeItemListStart
+          %   \resumeItem{Develop a special game mode based on WonderlandUHC by lulu2002}
+          %   \resumeItem{Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review}
+          %   \resumeItem{Implemented continuous delivery using TravisCI to build the plugin upon new a release}
+          %   \resumeItem{Collaborated with Minecraft server administrators to suggest features and get feedback about the plugin}
+          % \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Java, C++, HTML/CSS} \\
+     \textbf{Embedded Programming}{: Arduino, Raspberry Pi, NI RoboRIO} \\
+     \textbf{Developer Tools}{: Git, Visual Studio Code, IntelliJ IDEA} \\
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}
