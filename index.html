@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruei-Hong Ni's Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        #pdf-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .pdf-page {
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .pdf-page canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .loading {
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            #pdf-container {
+                padding: 10px;
+            }
+            
+            .pdf-page {
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+
+<body>
+    <div id="pdf-container">
+        <div class="loading">載入中...</div>
+    </div>
+
+    <script>
+        // 設置PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // 載入並渲染PDF
+        async function loadPDF() {
+            try {
+                const container = document.getElementById('pdf-container');
+                const loadingDiv = document.querySelector('.loading');
+
+                // 載入PDF文件
+                const loadingTask = pdfjsLib.getDocument('Resume.pdf');
+                const pdf = await loadingTask.promise;
+
+                // 計算適合的縮放比例（基於窗口寬度）
+                const maxWidth = Math.min(window.innerWidth - 40, 900); // 最大寬度900px，留40px邊距
+
+                // 獲取設備像素比以提高清晰度
+                const devicePixelRatio = window.devicePixelRatio || 1;
+
+                // 渲染所有頁面
+                for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                    const page = await pdf.getPage(pageNum);
+                    const viewport = page.getViewport({ scale: 1.0 });
+                    
+                    // 計算縮放比例以適應屏幕寬度（顯示尺寸）
+                    const displayScale = maxWidth / viewport.width;
+                    const displayViewport = page.getViewport({ scale: displayScale });
+                    
+                    // 使用更高解析度渲染（實際像素尺寸）
+                    const renderScale = displayScale * devicePixelRatio;
+                    const renderViewport = page.getViewport({ scale: renderScale });
+
+                    // 創建canvas元素
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // 設置canvas實際像素尺寸（高DPI）
+                    canvas.width = renderViewport.width;
+                    canvas.height = renderViewport.height;
+                    
+                    // 設置canvas顯示尺寸（縮小到正常顯示大小）
+                    canvas.style.width = displayViewport.width + 'px';
+                    canvas.style.height = displayViewport.height + 'px';
+
+                    // 創建頁面容器
+                    const pageDiv = document.createElement('div');
+                    pageDiv.className = 'pdf-page';
+                    pageDiv.appendChild(canvas);
+                    container.appendChild(pageDiv);
+
+                    // 渲染PDF頁面到高DPI canvas
+                    const renderContext = {
+                        canvasContext: ctx,
+                        viewport: renderViewport
+                    };
+
+                    await page.render(renderContext).promise;
+                }
+
+                // 隱藏載入提示
+                loadingDiv.style.display = 'none';
+            } catch (error) {
+                console.error('載入PDF時發生錯誤:', error);
+                document.querySelector('.loading').textContent = '載入PDF時發生錯誤';
+            }
+        }
+
+        // 當頁面載入完成後執行
+        window.addEventListener('load', loadPDF);
+    </script>
+</body>
+
+</html>
